@@ -1,15 +1,17 @@
-import Node from './Node';
+/* eslint-disable no-underscore-dangle */
 import CanvasRenderingContext2D from 'expo-2d-context';
+
+import Node from './Node';
 
 class Element extends Node {
   constructor(tagName) {
-    return super(tagName.toUpperCase());
+    super(tagName.toUpperCase());
 
-    this.doc = {
-      body: {
-        innerHTML: '',
-      },
-    };
+    // this.doc = {
+    //   body: {
+    //     innerHTML: '',
+    //   },
+    // };
   }
 
   get tagName() {
@@ -21,6 +23,7 @@ class Element extends Node {
   get clientWidth() {
     return this.innerWidth;
   }
+
   get clientHeight() {
     return this.innerHeight;
   }
@@ -28,6 +31,7 @@ class Element extends Node {
   get offsetWidth() {
     return this.innerWidth;
   }
+
   get offsetHeight() {
     return this.innerHeight;
   }
@@ -35,13 +39,14 @@ class Element extends Node {
   get innerWidth() {
     return window.innerWidth;
   }
+
   get innerHeight() {
     return window.innerHeight;
   }
 
   getContext(contextType, contextOptions, context) {
     const possibleContext = context || global.__context;
-    if (contextType != '2d' && possibleContext) {
+    if (contextType !== '2d' && possibleContext) {
       return possibleContext;
     }
     if (contextType === '2d' && possibleContext) {
@@ -49,8 +54,8 @@ class Element extends Node {
     }
 
     return {
-      fillText: (text, x, y, maxWidth) => ({}),
-      measureText: text => ({
+      fillText: (/* text, x, y, maxWidth */) => ({}),
+      measureText: (text) => ({
         width: (text || '').split('').length * 6,
         height: 24,
       }),

@@ -1,7 +1,7 @@
 import Element from './Element';
-import HTMLVideoElement from './HTMLVideoElement';
-import HTMLImageElement from './HTMLImageElement';
 import HTMLCanvasElement from './HTMLCanvasElement';
+import HTMLImageElement from './HTMLImageElement';
+import HTMLVideoElement from './HTMLVideoElement';
 
 class Document extends Element {
   constructor() {
@@ -33,7 +33,7 @@ class Document extends Element {
     return element;
   }
 
-  getElementById(id) {
+  getElementById() {
     return new Element('div');
   }
 }

@@ -1,0 +1,29 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:react/jsx-runtime"
+  ],
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "rules": {
+    "global-require": "warn",
+    "import/no-unresolved": "warn",
+    "class-methods-use-this": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "ignoreComments": true
+      }
+    ],
+    "react/prop-types": "off", // Since we do not use prop-types
+    "react/require-default-props": "off", // Since we do not use prop-typescript
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
+  }
+}

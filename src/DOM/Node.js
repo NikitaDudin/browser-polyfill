@@ -1,5 +1,5 @@
-// @flow
-import { EventEmitter } from 'fbemitter';
+/* eslint-disable no-underscore-dangle */
+import { EventEmitter } from 'eventemitter3';
 
 class Node {
   constructor(nodeName) {
@@ -21,8 +21,8 @@ class Node {
 
   _checkEmitter() {
     if (
-      !this.emitter ||
-      !(this.emitter.on || this.emitter.addEventListener || this.emitter.addListener)
+      !this.emitter
+      || !(this.emitter.on || this.emitter.addEventListener || this.emitter.addListener)
     ) {
       this.emitter = new EventEmitter();
     }
@@ -51,8 +51,11 @@ class Node {
   }
 
   appendChild() {}
+
   insertBefore() {}
+
   removeChild() {}
+
   setAttributeNS() {}
 
   getBoundingClientRect() {

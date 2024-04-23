@@ -1,11 +1,12 @@
-import { Image } from 'react-native';
+/* eslint-disable no-underscore-dangle */
 import * as FileSystem from 'expo-file-system';
-const { writeAsStringAsync, documentDirectory } = FileSystem;
-const EncodingType = FileSystem.EncodingType || FileSystem.EncodingTypes;
-
+import { Image } from 'react-native';
 import { v1 as uuidv1 } from 'uuid';
 
 import Element from './Element';
+
+const { writeAsStringAsync, documentDirectory } = FileSystem;
+const EncodingType = FileSystem.EncodingType || FileSystem.EncodingTypes;
 
 const b64Extensions = {
   '/': 'jpg',
@@ -44,6 +45,7 @@ class HTMLImageElement extends Element {
   get onload() {
     return this._onload;
   }
+
   set onload(value) {
     this._onload = value;
   }
@@ -51,6 +53,7 @@ class HTMLImageElement extends Element {
   get complete() {
     return this._complete;
   }
+
   set complete(value) {
     this._complete = value;
     if (value) {
@@ -75,9 +78,9 @@ class HTMLImageElement extends Element {
   _load() {
     if (this.src) {
       if (
-        typeof this.src === 'string' &&
-        this.src.startsWith &&
-        this.src.startsWith('data:')
+        typeof this.src === 'string'
+        && this.src.startsWith
+        && this.src.startsWith('data:')
       ) {
         // is base64 - convert and try again;
         this._base64 = this.src;
@@ -92,7 +95,7 @@ class HTMLImageElement extends Element {
             this._load();
           } catch (error) {
             if (global.__debug_browser_polyfill_image) {
-              console.log(`@expo/browser-polyfill: Error:`, error.message);
+              console.log('@expo/browser-polyfill: Error:', error.message);
             }
             this.emitter.emit('error', { target: this, error });
           }
@@ -109,7 +112,7 @@ class HTMLImageElement extends Element {
             this.height = height;
             this.complete = true;
           },
-          error => {
+          () => {
             this.emitter.emit('error', { target: this });
           },
         );
